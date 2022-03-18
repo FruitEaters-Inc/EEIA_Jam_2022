@@ -7,7 +7,9 @@ import kivy
 kivy.require('2.0.0')
 Window.size = (1920, 1080)
 Window.clearcolor = (78 / 255, 173 / 255, 245 / 255, 1)
-#Window.fullscreen = True
+
+
+# Window.fullscreen = True
 
 class MyApp(App):
     def __init__(self):
@@ -19,7 +21,6 @@ class MyApp(App):
         self.layout = None
 
     def build(self):
-
         self.map = Map.load_map("map.txt")
         self.iso_map = Map.map_isometrise(self.map)
 
