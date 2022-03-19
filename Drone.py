@@ -1,6 +1,8 @@
 from Tile import Tile
 from kivy.uix.image import Image
 
+from pathfinding import dfs
+
 
 class Drone:
     def __init__(self, tile, drone_range: int):
@@ -15,13 +17,7 @@ class Drone:
         self.targets.append(target)
 
     def navigate_to(self, target: Tile):
-        # find_path()
-        # movePath.append(path)
-        # movePath.append(path[::-1])
-            # Of course there'd have to be a delay between each move
-        # while len(self.movePath) != 0:
-        #     self.pop_move()
-        pass
+        self.movePath(dfs(self.current_tile, target))
 
     def pop_move(self):
         if len(self.movePath) == 0:
