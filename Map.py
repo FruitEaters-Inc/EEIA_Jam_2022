@@ -70,6 +70,8 @@ def map_organise(char_map):
                 new_tile.image = Image(source='roads/p.png', pos=(x_coord, y_coord), nocache=True)
             elif x == 'q':
                 new_tile.image = Image(source='roads/q.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == '0':
+                new_tile.image = Image(source='grass.png', pos=(x_coord, y_coord), nocache=True)
 
             new_tile.pos = (x_coord, y_coord)
 
