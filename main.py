@@ -17,7 +17,7 @@ Window.size = (1920, 1080)
 Window.clearcolor = (78 / 255, 173 / 255, 245 / 255, 1)
 
 
-# Window.fullscreen = True
+Window.fullscreen = True
 
 Config.set('graphics', 'width', '1920')
 Config.set('graphics', 'height', '1080')
@@ -73,7 +73,7 @@ class MyApp(App):
 
         self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
 
-        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 10)
+        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 1)
 
         self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1/6)
 
@@ -105,7 +105,8 @@ class MyApp(App):
     def move_drones(self):
         for drone in self.my_drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
-                drone.create_path(Event.destinations.pop(), "drone_med.zip")
+                event = Event.destinations.pop()
+                drone.create_path(event.tile, event.target)
 
         for drone in self.my_drones:
             drone.move_to(drone.pop_move())

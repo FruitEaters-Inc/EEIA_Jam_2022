@@ -6,9 +6,9 @@ from kivy.uix.button import Button
 destinations = []
 
 
-def add_destination(tile):
+def add_destination(event):
     global destinations
-    destinations.append(tile)
+    destinations.append(event)
 
 
 def get_destinations():
@@ -30,7 +30,7 @@ class Event:
 
         self.button = Button(background_normal='drone.png', background_down='trans.png', pos=(x, y),
                              size_hint=(None, None), size=(40, 40))
-        self.button.bind(on_press=lambda instance: add_destination(self.tile))
+        self.button.bind(on_press=lambda instance: add_destination(self))
 
     def draw_event(self, layout):
         layout.add_widget(self.image)
