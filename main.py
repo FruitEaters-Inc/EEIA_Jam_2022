@@ -63,7 +63,7 @@ class MyApp(App):
 
         new_drone = Drone.Drone(drone_spawn, 10)
 
-        screen = Image(source='screen.png', pos=(-130, 23), allow_stretch=False, nocache=True)
+        screen = Image(source='screen.png', pos=(-130, 13), allow_stretch=False, nocache=True)
         self.map_layout.add_widget(screen)
 
         self.my_drones = []
