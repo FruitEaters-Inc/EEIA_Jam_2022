@@ -8,5 +8,4 @@ class Event:
         self.image = Image(source='alert.zip', pos=tile.pos, nocache=True)
 
     def draw_event(self, layout):
-        layout.clear_widgets()
         layout.add_widget(self.image)

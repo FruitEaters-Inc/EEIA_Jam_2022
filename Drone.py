@@ -30,6 +30,5 @@ class Drone:
             self.image.pos = self.current_tile.pos
 
     def draw_drone(self, layout):
-        layout.clear_widgets()
         layout.add_widget(self.image)
 
