@@ -2,7 +2,7 @@ from Tile import Tile
 
 
 class Drone:
-    def __init__(self, start_pos: (int, int), range: int, tileMap):
+    def __init__(self, start_pos: tuple(int, int), range: int, tileMap):
         self.start_pos = start_pos
         self.current_pos = start_pos
         self.current_tile = tileMap[start_pos[0]][start_pos[1]]
