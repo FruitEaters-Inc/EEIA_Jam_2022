@@ -29,6 +29,7 @@ class MyApp(App):
         self.main_layout = None
         self.event_layout = None
         self.drone_layout = None
+        self.map_layout = None
 
         self.map = None
         self.tile_map = None
@@ -40,8 +41,9 @@ class MyApp(App):
         self.main_layout = RelativeLayout()
         self.drone_layout = RelativeLayout()
         self.event_layout = RelativeLayout()
+        self.map_layout = RelativeLayout()
 
-        Map.build_map(self.tile_map, self.main_layout)
+        Map.build_map(self.tile_map, self.map_layout)
 
         Tile.find_neighbours(self.tile_map)
 
@@ -53,11 +55,9 @@ class MyApp(App):
         self.my_drones = []
         self.my_drones.append(new_drone)
 
-        self.main_layout.add_widget(self.drone_layout)
-
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
-        self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1)
+        self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
 
         self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 10)
 
@@ -66,14 +66,22 @@ class MyApp(App):
         return self.main_layout
 
     def refresh(self):
+        self.main_layout.clear_widgets()
+        self.main_layout.add_widget(self.map_layout)
         self.drone_layout.clear_widgets()
 
         for drone in self.my_drones:
             drone.draw_drone(self.drone_layout)
 
+        self.main_layout.add_widget(self.drone_layout)
+
         self.event_layout.clear_widgets()
         for event in self.my_events.eventList:
             event.draw_event(self.event_layout)
+
+        self.main_layout.add_widget(self.event_layout)
+
+        return self.main_layout
 
 
 MyApp().run()
