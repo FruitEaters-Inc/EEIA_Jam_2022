@@ -12,10 +12,16 @@ class Drone:
         self.movePath = []
         self.imagePath = []
         self.targets = []
-        self.image = Image(source='drone.zip', pos=self.current_pos, nocache=True)
+        self.image = Image(source='drone.zip', pos=self.current_pos,
+                           nocache=True)
 
     def set_image(self, image: str):
-        self.image.source = image
+        if image == "aid_kit":
+            self.image.source = "drone_med.zip"
+        if image == "ice_cream":
+            self.image.source = "drone_ice.zip"
+        if image == "empty":
+            self.image.source = "drone.zip"
 
     def add_target(self, target: Tile):
         self.targets.append(target)
@@ -47,4 +53,3 @@ class Drone:
 
     def draw_drone(self, layout):
         layout.add_widget(self.image)
-
