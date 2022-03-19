@@ -28,7 +28,6 @@ def find_neighbours(tile_map):
                 check_right(tile, tile_map, x, y)
 
 
-
 class Tile:
     def __init__(self):
         self.pos = None
@@ -36,6 +35,12 @@ class Tile:
         self.image = None
         self.is_safe = None
         self.is_permitted = None
+
+    def is_neighbour(self, possible_neighbour):
+        if possible_neighbour in self.neighbours.values():
+            return True
+
+        return False
 
     def get_interaction(self):
         pass

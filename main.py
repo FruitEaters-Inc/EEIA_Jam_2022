@@ -33,8 +33,6 @@ class MyApp(App):
 
         Tile.find_neighbours(self.tile_map)
 
-        Tile.test_neighbours(self.tile_map)
-
         return self.layout
 
 
