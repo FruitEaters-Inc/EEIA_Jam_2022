@@ -36,9 +36,6 @@ class Event:
         layout.add_widget(self.image)
         layout.add_widget(self.button)
 
-    def print(self):
-        print("nie dzila")
-
     def random_package(self):
         packages = ["aid_kit", "ice_cream"]
         self.target = random.choice(packages)

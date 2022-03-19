@@ -40,6 +40,5 @@ class Drone:
             self.move_to(self.current_tile.neighbours[direction])
 
     def draw_drone(self, layout):
-        layout.clear_widgets()
         layout.add_widget(self.image)
 

@@ -25,7 +25,7 @@ def map_organise(char_map):
 
     for y in char_map:
 
-        y_coord = y_counter * -40 + 520
+        y_coord = y_counter * -40 + 450
         x_counter = 0
 
         for x in y:
@@ -33,7 +33,7 @@ def map_organise(char_map):
             new_tile = Tile.Tile()
             new_tile.type = "road"
 
-            x_coord = x_counter * 40 - 940
+            x_coord = x_counter * 40 - 870
 
             if 'a' <= x <= 'q':
                 new_tile.is_safe = True

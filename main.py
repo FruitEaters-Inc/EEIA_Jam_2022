@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.app import App
 from kivy.clock import Clock
+from kivy.uix.image import Image
 from kivy.config import Config
 import kivy
 
@@ -62,6 +63,9 @@ class MyApp(App):
 
         new_drone = Drone.Drone(drone_spawn, 10)
 
+        screen = Image(source='screen.png', pos=(-130, 23), allow_stretch=False, nocache=True)
+        self.map_layout.add_widget(screen)
+
         self.my_drones = []
         self.my_drones.append(new_drone)
 
@@ -71,7 +75,7 @@ class MyApp(App):
 
         self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 10)
 
-        self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1)
+        self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1/6)
 
         self.refresh()
 
@@ -84,7 +88,8 @@ class MyApp(App):
 
         for drone in self.my_drones:
             if drone is not None:
-                drone.draw_drone(self.drone_layout)
+                if len(drone.movePath) != 0:
+                    drone.draw_drone(self.drone_layout)
 
         self.main_layout.add_widget(self.drone_layout)
 
