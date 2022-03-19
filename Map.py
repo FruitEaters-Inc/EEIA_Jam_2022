@@ -20,6 +20,7 @@ def map_organise(char_map):
     tile_map = []
     tile_row = []
     y_counter = 0
+    building_offset = 20
 
     for y in char_map:
 
@@ -72,6 +73,8 @@ def map_organise(char_map):
                 new_tile.image = Image(source='roads/q.png', pos=(x_coord, y_coord), nocache=True)
             elif x == '0':
                 new_tile.image = Image(source='grass.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == '1':
+                new_tile.image = Image(source='dronex.png', pos=(x_coord, y_coord+building_offset), nocache=True)
 
             new_tile.pos = (x_coord, y_coord)
 
