@@ -14,7 +14,7 @@ class Drone:
         self.image = Image(source='drone.zip', pos=self.current_pos, nocache=True)
 
     def set_image(self, image: str):
-        self.image = Image(source=image, pos=self.current_pos, nocache=True)
+        self.image.source = image
 
     def add_target(self, target: Tile):
         self.targets.append(target)
