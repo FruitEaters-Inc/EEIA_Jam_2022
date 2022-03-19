@@ -16,11 +16,12 @@ def load_map(file):
     return map_data
 
 
-def map_isometrise(binary_map):
+def map_organise(char_map):
     tile_map = []
+    tile_row = []
     y_counter = 0
 
-    for y in binary_map:
+    for y in char_map:
 
         y_coord = y_counter * -40 + 520
         x_counter = 0
@@ -44,7 +45,10 @@ def map_isometrise(binary_map):
 
             x_counter += 1
 
-            tile_map.append(new_tile)
+            tile_row.append(new_tile)
+
+        tile_map.append(tile_row.copy())
+        tile_row.clear()
 
         y_counter += 1
 
@@ -52,6 +56,7 @@ def map_isometrise(binary_map):
 
 
 def build_map(tile_map, layout):
-    for tile in tile_map:
-        if tile is not None and tile.image is not None:
-            layout.add_widget(tile.image)
+    for row in tile_map:
+        for tile in row:
+            if tile is not None and tile.image is not None:
+                layout.add_widget(tile.image)
