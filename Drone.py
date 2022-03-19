@@ -16,12 +16,18 @@ class Drone:
                            nocache=True)
 
     def set_image(self, image: str):
+        if self.image.source == image:
+            return
+
         if image == "aid_kit":
             self.image.source = "drone_med.zip"
         elif image == "ice_cream":
             self.image.source = "drone_ice.zip"
         elif image == "empty":
+            # TARGET REACHED
             self.image.source = "drone.zip"
+
+
 
     def add_target(self, target: Tile):
         self.targets.append(target)
