@@ -44,6 +44,3 @@ class Event:
 
     def remove_button(self):
         self.button = None
-
-    def delete_self(self):
-        del self
