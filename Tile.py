@@ -37,7 +37,6 @@ def find_tile(tile_map, tile_type):
             if tile.type == tile_type:
                 return tile
 
-
 class Tile:
     def __init__(self):
         self.pos = None
@@ -47,6 +46,7 @@ class Tile:
         self.is_permitted = True
         self.type = ""
         self.can_give_interaction = True
+        self.event = None
 
     def is_neighbour(self, possible_neighbour):
         if possible_neighbour in self.neighbours.values():
@@ -55,6 +55,7 @@ class Tile:
         return False
 
     def get_interaction(self):
-        new_event = Event.Event(self)
+        self.event = Event.Event(self)
 
-        return new_event
+    def on_drone_enter(self):
+        pass
