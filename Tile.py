@@ -46,7 +46,7 @@ class Tile:
         self.is_permitted = True
         self.type = ""
         self.can_give_interaction = True
-        self.event = None
+        # ustawic na wodzie i lotnisku brak interakcji
 
     def is_neighbour(self, possible_neighbour):
         if possible_neighbour in self.neighbours.values():
@@ -55,7 +55,7 @@ class Tile:
         return False
 
     def get_interaction(self):
-        self.event = Event.Event(self)
+        return Event.Event(self)
 
     def on_drone_enter(self):
         pass

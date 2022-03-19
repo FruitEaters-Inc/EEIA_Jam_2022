@@ -3,6 +3,18 @@ import random
 from kivy.uix.image import Image
 from kivy.uix.button import Button
 
+destinations = []
+
+
+def add_destination(tile):
+    global destinations
+    destinations.append(tile)
+
+
+def get_destinations():
+    global destinations
+    return destinations
+
 
 class Event:
     def __init__(self, tile):
@@ -16,9 +28,9 @@ class Event:
 
         self.random_package()
 
-        self.button = Button(background_normal='trans.png', background_down='trans.png', pos=(x, y),
+        self.button = Button(background_normal='drone.png', background_down='trans.png', pos=(x, y),
                              size_hint=(None, None), size=(40, 40))
-        self.button.bind(on_press=lambda instance: self.print())
+        self.button.bind(on_press=lambda instance: add_destination(self.tile))
 
     def draw_event(self, layout):
         layout.add_widget(self.image)

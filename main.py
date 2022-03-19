@@ -8,6 +8,7 @@ from kivy.config import Config
 import kivy
 
 import Tile
+import Event
 import business_logic
 
 kivy.require('2.0.0')
@@ -68,7 +69,7 @@ class MyApp(App):
 
         self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
 
-        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 5)
+        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 10)
 
         self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1)
 
@@ -94,9 +95,15 @@ class MyApp(App):
 
         self.main_layout.add_widget(self.event_layout)
 
+        print(Event.destinations)
+
         return self.main_layout
 
     def move_drones(self):
+        for drone in self.my_drones:
+            if len(drone.movePath) == 0 and len(Event.destinations) != 0:
+                drone.create_path(Event.destinations.pop())
+
         for drone in self.my_drones:
             if drone is not None:
                 drone.move_to(drone.pop_move())

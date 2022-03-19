@@ -16,16 +16,21 @@ class Drone:
     def add_target(self, target: Tile):
         self.targets.append(target)
 
-    def navigate_to(self, target: Tile):
-        self.movePath = dfs(self.current_tile, target)
+    def create_path(self, target: Tile):
+        path = dfs(self.current_tile, target)
+        self.movePath.append(path)
+        self.movePath.append(path[::-1])
+        while len(self.movePath) != 0:
+            self.pop_move()
 
     def pop_move(self):
         if len(self.movePath) == 0:
             return
-        target = self.movePath[0]
-        self.move_to(target)
+        return self.movePath.pop()
 
     def move_to(self, target: Tile):
+        if target is None:
+            return
         if not target.is_neighbour(self.current_tile):
             return
         self.current_tile = target
