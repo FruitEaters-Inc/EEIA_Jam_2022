@@ -105,7 +105,7 @@ class MyApp(App):
     def move_drones(self):
         for drone in self.my_drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
-                drone.create_path(Event.destinations.pop())
+                drone.create_path(Event.destinations.pop(), "drone_med.zip")
 
         for drone in self.my_drones:
             drone.move_to(drone.pop_move())

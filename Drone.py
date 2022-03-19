@@ -10,6 +10,7 @@ class Drone:
         self.current_pos = self.current_tile.pos
         self.range = drone_range
         self.movePath = []
+        self.imagePath = []
         self.targets = []
         self.image = Image(source='drone.zip', pos=self.current_pos, nocache=True)
 
@@ -19,13 +20,15 @@ class Drone:
     def add_target(self, target: Tile):
         self.targets.append(target)
 
-    def create_path(self, target: Tile):
+    def create_path(self, target: Tile, package: str):
         path = dfs(self.current_tile, target)
         self.movePath = path + path[::-1]
+        self.imagePath = ["drone.zip"] * len(path) + [package] * len(path)
 
     def pop_move(self):
         if len(self.movePath) == 0:
             return
+        self.set_image(self.imagePath.pop())
         return self.movePath.pop()
 
     def move_to(self, target: Tile):
