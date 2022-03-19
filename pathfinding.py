@@ -8,6 +8,6 @@ def dfs(start, end):
             visited.add(point)
             if point == end:
                 return road
-            for n in point.neighbors:
+            for n in point.neighbours.values():
                 queue.append(n)
     return road

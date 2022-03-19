@@ -18,10 +18,7 @@ class Drone:
 
     def create_path(self, target: Tile):
         path = dfs(self.current_tile, target)
-        self.movePath.append(path)
-        self.movePath.append(path[::-1])
-        while len(self.movePath) != 0:
-            self.pop_move()
+        self.movePath = path + path[::-1]
 
     def pop_move(self):
         if len(self.movePath) == 0:

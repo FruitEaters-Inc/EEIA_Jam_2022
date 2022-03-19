@@ -95,8 +95,6 @@ class MyApp(App):
 
         self.main_layout.add_widget(self.event_layout)
 
-        print(Event.destinations)
-
         return self.main_layout
 
     def move_drones(self):
@@ -105,8 +103,7 @@ class MyApp(App):
                 drone.create_path(Event.destinations.pop())
 
         for drone in self.my_drones:
-            if drone is not None:
-                drone.move_to(drone.pop_move())
+            drone.move_to(drone.pop_move())
 
 
 MyApp().run()
