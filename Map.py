@@ -124,8 +124,8 @@ def map_organise(char_map):
                 new_tile.image = Image(source='roads/^.png', pos=(x_coord, y_coord), nocache=True)
             elif x == '%':
                 new_tile.image = Image(source='roads/%.png', pos=(x_coord, y_coord), nocache=True)
-            elif x == '|':
-                new_tile.image = Image(source='roads/|.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == '&':
+                new_tile.image = Image(source='roads/&.png', pos=(x_coord, y_coord), nocache=True)
             elif x == '=':
                 new_tile.image = Image(source='roads/=.png', pos=(x_coord, y_coord), nocache=True)
             elif x == '+':
