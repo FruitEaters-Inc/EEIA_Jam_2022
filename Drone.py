@@ -9,6 +9,7 @@ class Drone:
         self.range = range
         self.movePath = []
 
+
     def pop_move(self):
         if len(self.movePath) == 0:
             return
@@ -22,4 +23,7 @@ class Drone:
         self.current_pos = target.pos
         target.get_interaction()
 
+    def move_direction(self, direction:str) -> None:
+        if direction in self.current_tile.neighbours.keys():
+            self.move_to(self.current_tile.neighbours[direction])
 
