@@ -1,3 +1,4 @@
+import Drone
 import Map
 from kivy.core.window import Window
 from kivy.uix.relativelayout import RelativeLayout
@@ -18,6 +19,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.my_drones = None
         self.map = None
         self.tile_map = None
 
@@ -32,6 +34,14 @@ class MyApp(App):
         Map.build_map(self.tile_map, self.layout)
 
         Tile.find_neighbours(self.tile_map)
+
+        new_drone = Drone.Drone((0, 0), 10, self.tile_map)
+
+        self.my_drones = []
+        self.my_drones.append(new_drone)
+
+        for drone in self.my_drones:
+            drone.draw_drone(self.layout)
 
         return self.layout
 
