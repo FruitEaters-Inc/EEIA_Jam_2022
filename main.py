@@ -108,6 +108,7 @@ class MyApp(App):
         for drone in self.my_drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
                 event = Event.destinations.pop()
+                drone.add_target(event)
                 drone.create_path(event.tile, event.target)
                 event.image.source = "green_alert.zip"
                 event.remove_button()

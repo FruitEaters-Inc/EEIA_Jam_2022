@@ -1,3 +1,4 @@
+from Event import Event
 from Tile import Tile
 from kivy.uix.image import Image
 
@@ -5,6 +6,7 @@ from pathfinding import dfs
 
 
 class Drone:
+    # Replace tile argument with event?
     def __init__(self, tile, drone_range: int):
         self.current_tile = tile
         self.current_pos = self.current_tile.pos
@@ -24,12 +26,15 @@ class Drone:
         elif image == "ice_cream":
             self.image.source = "drone_ice.zip"
         elif image == "empty":
-            # TARGET REACHED
+            self.remove_event()
             self.image.source = "drone.zip"
 
+    def remove_event(self):
+        if len(self.targets) != 0:
+            # Removes the event from self.targets and marks it as obsolete
+            self.targets.pop(0).obsolete = True
 
-
-    def add_target(self, target: Tile):
+    def add_target(self, target: Event):
         self.targets.append(target)
 
     def create_path(self, target: Tile, package: str):

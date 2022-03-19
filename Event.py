@@ -18,6 +18,7 @@ def get_destinations():
 
 class Event:
     def __init__(self, tile):
+        self.obsolete = False
         self.tile = tile
         self.target = None
         self.image = Image(source='alert.zip', pos=tile.pos, nocache=True)
