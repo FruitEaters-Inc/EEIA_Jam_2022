@@ -28,13 +28,22 @@ def find_neighbours(tile_map):
                 check_right(tile, tile_map, x, y)
 
 
+def find_tile(tile_map, tile_type):
+    for row in tile_map:
+        for tile in row:
+            if tile.type == tile_type:
+                return tile
+
+
 class Tile:
     def __init__(self):
         self.pos = None
         self.neighbours = {}
         self.image = None
-        self.is_safe = None
-        self.is_permitted = None
+        self.is_safe = True
+        self.is_permitted = True
+        self.type = ""
+        self.can_give_interaction = True
 
     def is_neighbour(self, possible_neighbour):
         if possible_neighbour in self.neighbours.values():

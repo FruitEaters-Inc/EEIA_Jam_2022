@@ -1,6 +1,7 @@
 from kivy.uix.image import Image
 
 import Tile
+from business_logic import Dronex
 
 
 def load_map(file):
@@ -30,6 +31,7 @@ def map_organise(char_map):
         for x in y:
 
             new_tile = Tile.Tile()
+            new_tile.type = "road"
 
             x_coord = x_counter * 40 - 940
 
@@ -73,8 +75,11 @@ def map_organise(char_map):
                 new_tile.image = Image(source='roads/q.png', pos=(x_coord, y_coord), nocache=True)
             elif x == '0':
                 new_tile.image = Image(source='grass.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "grass"
             elif x == '1':
+                new_tile = Dronex()
                 new_tile.image = Image(source='dronex.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "DRONEX"
 
             new_tile.pos = (x_coord, y_coord)
 

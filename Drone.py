@@ -3,13 +3,12 @@ from kivy.uix.image import Image
 
 
 class Drone:
-    def __init__(self, start_pos, drone_range: int, tile_map):
-        self.start_pos = start_pos
-        self.current_pos = start_pos
-        self.current_tile = tile_map[start_pos[0]][start_pos[1]]
+    def __init__(self, tile, drone_range: int):
+        self.current_tile = tile
+        self.current_pos = self.current_tile.pos
         self.range = drone_range
         self.movePath = []
-        self.image = Image(source='drone.png', pos=start_pos, nocache=True)
+        self.image = Image(source='drone.png', pos=self.current_pos, nocache=True)
 
     def pop_move(self):
         if len(self.movePath) == 0:

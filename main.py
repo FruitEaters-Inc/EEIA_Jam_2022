@@ -35,7 +35,10 @@ class MyApp(App):
 
         Tile.find_neighbours(self.tile_map)
 
-        new_drone = Drone.Drone((0, 0), 10, self.tile_map)
+        drone_spawn = Tile.find_tile(self.tile_map, "DRONEX")
+        drone_spawn = drone_spawn.neighbours["up"]
+
+        new_drone = Drone.Drone(drone_spawn, 10)
 
         self.my_drones = []
         self.my_drones.append(new_drone)
