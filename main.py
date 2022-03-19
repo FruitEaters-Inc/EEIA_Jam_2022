@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.app import App
 from kivy.clock import Clock
+from kivy.config import Config
 import kivy
 
 import Tile
@@ -16,6 +17,11 @@ Window.clearcolor = (78 / 255, 173 / 255, 245 / 255, 1)
 
 # Window.fullscreen = True
 
+Config.set('graphics', 'width', '1920')
+Config.set('graphics', 'height', '1080')
+
+Config.set('graphics', 'window_state', 'maximized')
+Config.set('graphics', 'resizable', False)
 
 class MyApp(App):
     def __init__(self):
