@@ -59,7 +59,7 @@ class MyApp(App):
 
         self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
 
-        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 10)
+        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 1)
 
         self.refresh()
 
