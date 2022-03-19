@@ -22,8 +22,6 @@ class Drone:
             self.image.source = "drone_ice.zip"
         elif image == "empty":
             self.image.source = "drone.zip"
-        else:
-            print(image)
 
     def add_target(self, target: Tile):
         self.targets.append(target)

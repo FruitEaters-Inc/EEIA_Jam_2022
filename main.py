@@ -62,18 +62,20 @@ class MyApp(App):
         drone_spawn = drone_spawn.neighbours["up"]
 
         new_drone = Drone.Drone(drone_spawn, 10)
+        new_drone2 = Drone.Drone(drone_spawn, 10)
 
         screen = Image(source='screen.png', pos=(-130, 13), allow_stretch=False, nocache=True)
         self.map_layout.add_widget(screen)
 
         self.my_drones = []
         self.my_drones.append(new_drone)
+        self.my_drones.append(new_drone2)
 
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
         self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
 
-        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 1)
+        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 5)
 
         self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1/6)
 
@@ -107,6 +109,8 @@ class MyApp(App):
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
                 event = Event.destinations.pop()
                 drone.create_path(event.tile, event.target)
+                event.image.source = "green_alert.zip"
+                event.remove_button()
 
         for drone in self.my_drones:
             drone.move_to(drone.pop_move())

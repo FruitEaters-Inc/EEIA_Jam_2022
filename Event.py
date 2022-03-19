@@ -33,9 +33,17 @@ class Event:
         self.button.bind(on_press=lambda instance: add_destination(self))
 
     def draw_event(self, layout):
-        layout.add_widget(self.image)
-        layout.add_widget(self.button)
+        if self.image is not None:
+            layout.add_widget(self.image)
+        if self.button is not None:
+            layout.add_widget(self.button)
 
     def random_package(self):
         packages = ["aid_kit", "ice_cream"]
         self.target = random.choice(packages)
+
+    def remove_button(self):
+        self.button = None
+
+    def delete_self(self):
+        del self
