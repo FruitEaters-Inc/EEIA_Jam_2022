@@ -1,3 +1,6 @@
+import Event
+
+
 def check_up(tile, tile_map, x, y):
     tile.neighbours['up'] = tile_map[y-1][x]
 
@@ -52,4 +55,6 @@ class Tile:
         return False
 
     def get_interaction(self):
-        pass
+        new_event = Event.Event(self)
+
+        return new_event

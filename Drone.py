@@ -8,7 +8,7 @@ class Drone:
         self.current_pos = self.current_tile.pos
         self.range = drone_range
         self.movePath = []
-        self.image = Image(source='drone.png', pos=self.current_pos, nocache=True)
+        self.image = Image(source='drone.zip', pos=self.current_pos, nocache=True)
 
     def pop_move(self):
         if len(self.movePath) == 0:
@@ -25,9 +25,11 @@ class Drone:
 
     def move_direction(self, direction: str) -> None:
         if direction in self.current_tile.neighbours.keys():
-            self.move_to(self.current_tile.neighbours[direction])\
-
+            self.move_to(self.current_tile.neighbours[direction])
+            self.current_pos = self.current_tile.pos
+            self.image.pos = self.current_tile.pos
 
     def draw_drone(self, layout):
+        layout.clear_widgets()
         layout.add_widget(self.image)
 

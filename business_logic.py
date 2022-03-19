@@ -2,6 +2,7 @@ import random
 from Tile import Tile
 
 
+
 class Finance:
     def __init__(self) -> None:
         self.budget = 0
@@ -24,3 +25,4 @@ class EventSpawner:
             if tile.can_give_interaction:
                 eventable = True
                 self.eventList.append(tile.get_interaction())
+
