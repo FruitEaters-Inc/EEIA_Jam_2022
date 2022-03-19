@@ -32,14 +32,44 @@ def map_organise(char_map):
 
             x_coord = x_counter * 40 - 940
 
-            if x == '1':
-                new_tile.image = Image(source='road.png', pos=(x_coord, y_coord), nocache=True)
+            if 'a' <= x <= 'q':
                 new_tile.is_safe = True
                 new_tile.is_permitted = True
-            elif x == '0':
-                new_tile.image = Image(source='grass.png', pos=(x_coord, y_coord), nocache=True)
-                new_tile.is_safe = True
-                new_tile.is_permitted = True
+
+            if x == 'a':
+                new_tile.image = Image(source='roads/a.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'b':
+                new_tile.image = Image(source='roads/b.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'c':
+                new_tile.image = Image(source='roads/c.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'd':
+                new_tile.image = Image(source='roads/d.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'e':
+                new_tile.image = Image(source='roads/e.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'f':
+                new_tile.image = Image(source='roads/f.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'g':
+                new_tile.image = Image(source='roads/g.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'h':
+                new_tile.image = Image(source='roads/h.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'i':
+                new_tile.image = Image(source='roads/i.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'j':
+                new_tile.image = Image(source='roads/j.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'k':
+                new_tile.image = Image(source='roads/k.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'l':
+                new_tile.image = Image(source='roads/l.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'm':
+                new_tile.image = Image(source='roads/m.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'n':
+                new_tile.image = Image(source='roads/n.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'o':
+                new_tile.image = Image(source='roads/o.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'p':
+                new_tile.image = Image(source='roads/p.png', pos=(x_coord, y_coord), nocache=True)
+            elif x == 'q':
+                new_tile.image = Image(source='roads/q.png', pos=(x_coord, y_coord), nocache=True)
 
             new_tile.pos = (x_coord, y_coord)
 

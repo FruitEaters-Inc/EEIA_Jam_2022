@@ -11,7 +11,7 @@ Window.size = (1920, 1080)
 Window.clearcolor = (78 / 255, 173 / 255, 245 / 255, 1)
 
 
-# Window.fullscreen = True
+Window.fullscreen = True
 
 
 class MyApp(App):
