@@ -80,21 +80,33 @@ def map_organise(char_map):
             elif x == 't':
                 new_tile.image = Image(source='roads/t.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == 'u':
                 new_tile.image = Image(source='roads/u.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == 'v':
                 new_tile.image = Image(source='roads/v.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == 'w':
                 new_tile.image = Image(source='roads/w.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == 'x':
                 new_tile.image = Image(source='roads/x.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == 'y':
                 new_tile.image = Image(source='roads/y.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+                new_tile.type = "airport"
             elif x == '0':
                 new_tile.image = Image(source='grass.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.type = "grass"
@@ -102,38 +114,71 @@ def map_organise(char_map):
                 new_tile = Dronex()
                 new_tile.image = Image(source='dronex.png', pos=(x_coord, y_coord+building_offset), nocache=True)
                 new_tile.type = "DRONEX"
+                new_tile.can_give_interaction = False
             elif x == '#':
                 new_tile.image = Image(source='roads/#.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '[':
                 new_tile.image = Image(source='roads/[.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == ']':
                 new_tile.image = Image(source='roads/].png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '(':
                 new_tile.image = Image(source='roads/(.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == ')':
                 new_tile.image = Image(source='roads/).png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '-':
                 new_tile.image = Image(source='roads/-.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '_':
                 new_tile.image = Image(source='roads/_.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '{':
                 new_tile.image = Image(source='roads/{.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '}':
                 new_tile.image = Image(source='roads/}.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '^':
                 new_tile.image = Image(source='roads/^.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '%':
                 new_tile.image = Image(source='roads/%.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '&':
                 new_tile.image = Image(source='roads/&.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '=':
                 new_tile.image = Image(source='roads/=.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '+':
                 new_tile.image = Image(source='roads/+.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '$':
                 new_tile.image = Image(source='roads/$.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
             elif x == '@':
                 new_tile.image = Image(source='roads/@.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.can_give_interaction = False
+                new_tile.type = "water"
 
             new_tile.pos = (x_coord, y_coord)
 

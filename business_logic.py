@@ -23,6 +23,7 @@ class EventSpawner:
         while not eventable:
             tile = random.choice(random.choice(self.tileMap))
             if tile.can_give_interaction:
-                eventable = True
-                self.eventList.append(tile.get_interaction())
+                if tile not in self.eventList:
+                    eventable = True
+                    self.eventList.append(tile.get_interaction())
 
