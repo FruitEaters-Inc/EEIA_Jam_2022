@@ -97,7 +97,9 @@ class MyApp(App):
         return self.main_layout
 
     def move_drones(self):
-        pass
+        for drone in self.my_drones:
+            if drone is not None:
+                drone.move_to(self.tile_map[0][0])
 
 
 MyApp().run()
