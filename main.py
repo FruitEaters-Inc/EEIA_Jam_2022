@@ -23,6 +23,7 @@ Config.set('graphics', 'height', '1080')
 Config.set('graphics', 'window_state', 'maximized')
 Config.set('graphics', 'resizable', False)
 
+
 class MyApp(App):
     def __init__(self):
         super().__init__()
