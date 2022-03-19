@@ -27,8 +27,10 @@ Config.set('graphics', 'resizable', False)
 class MyApp(App):
     def __init__(self):
         super().__init__()
+        
         self.main_loop = None
         self.event_clock = None
+        self.drone_movement = None
 
         self.my_events = None
         self.my_drones = None
@@ -68,6 +70,8 @@ class MyApp(App):
 
         self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 5)
 
+        self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1)
+
         self.refresh()
 
         return self.main_layout
@@ -78,17 +82,24 @@ class MyApp(App):
         self.drone_layout.clear_widgets()
 
         for drone in self.my_drones:
-            drone.draw_drone(self.drone_layout)
+            if drone is not None:
+                drone.draw_drone(self.drone_layout)
 
         self.main_layout.add_widget(self.drone_layout)
 
         self.event_layout.clear_widgets()
         for event in self.my_events.eventList:
-            event.draw_event(self.event_layout)
+            if event is not None:
+                event.draw_event(self.event_layout)
 
         self.main_layout.add_widget(self.event_layout)
 
         return self.main_layout
+
+    def move_drones(self):
+        for drone in self.my_drones:
+            if drone is not None:
+                drone.move_to(self.tile_map[0][0])
 
 
 MyApp().run()
