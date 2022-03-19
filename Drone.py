@@ -18,10 +18,12 @@ class Drone:
     def set_image(self, image: str):
         if image == "aid_kit":
             self.image.source = "drone_med.zip"
-        if image == "ice_cream":
+        elif image == "ice_cream":
             self.image.source = "drone_ice.zip"
-        if image == "empty":
+        elif image == "empty":
             self.image.source = "drone.zip"
+        else:
+            print(image)
 
     def add_target(self, target: Tile):
         self.targets.append(target)
@@ -29,7 +31,7 @@ class Drone:
     def create_path(self, target: Tile, package: str):
         path = dfs(self.current_tile, target)
         self.movePath = path + path[::-1]
-        self.imagePath = ["drone.zip"] * len(path) + [package] * len(path)
+        self.imagePath = ["empty"] * len(path) + [package] * len(path)
 
     def pop_move(self):
         if len(self.movePath) == 0:
