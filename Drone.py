@@ -17,7 +17,7 @@ class Drone:
         self.targets.append(target)
 
     def navigate_to(self, target: Tile):
-        self.movePath(dfs(self.current_tile, target))
+        self.movePath = dfs(self.current_tile, target)
 
     def pop_move(self):
         if len(self.movePath) == 0:

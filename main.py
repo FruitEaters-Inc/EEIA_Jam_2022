@@ -99,7 +99,7 @@ class MyApp(App):
     def move_drones(self):
         for drone in self.my_drones:
             if drone is not None:
-                drone.move_to(self.tile_map[0][0])
+                drone.move_to(drone.pop_move())
 
 
 MyApp().run()
