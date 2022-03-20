@@ -117,24 +117,24 @@ class MyApp(App):
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
         self.main_loop = Clock.schedule_interval(
-            lambda instance: self.refresh(), 1 / 10)
+            lambda instance: self.refresh(), 1)
 
         self.event_clock = Clock.schedule_interval(
             lambda instance: self.my_events.spawn_event(), 5)
 
         self.drone_movement = Clock.schedule_interval(
-            lambda instance: self.move_drones(), 1 / 6)
+            lambda instance: self.move_drones(), 1)
 
         self.refresh()
 
         return self.main_layout
 
     def IncreaseAutoclicker(self):
-        if self.player.purchaseAutoclicker:
+        if self.player.purchaseAutoclicker():
             if self.autoclicker_clock is not None:
                 self.autoclicker_clock.cancel()
             self.autoclicker_clock = Clock.schedule_interval(
-                lambda instance: 0, 10 / self.player.autoclicker)
+                lambda instance: self.autoclick(), 10 / self.player.autoclicker)
 
     def autoclick(self):
         filtered = list(filter(lambda x: not x.is_added_to_destinations, self.my_events.eventList))
