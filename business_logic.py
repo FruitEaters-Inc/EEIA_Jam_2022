@@ -1,31 +1,28 @@
 import random
-from Tile import Tile
+
+busy_tiles = []
 
 
-
-class Finance:
-    def __init__(self) -> None:
-        self.budget = 0
-
-
-class Dronex(Tile):
-    def __init__(self) -> None:
-        super().__init__()
+def remove_tile(tile):
+    global busy_tiles
+    for t in busy_tiles:
+        if t == tile:
+            print(busy_tiles.pop(busy_tiles.index(t)))
 
 
 class EventSpawner:
     def __init__(self, tile_map) -> None:
         self.tileMap = tile_map
         self.eventList = []
-        self.busy_tiles = []
 
     def spawn_event(self) -> None:
+        global busy_tiles
         eventable = False
         while not eventable:
             tile = random.choice(random.choice(self.tileMap))
             if tile.can_give_interaction:
-                if tile not in self.busy_tiles:
+                if tile not in busy_tiles:
                     eventable = True
                     self.eventList.append(tile.get_interaction())
-                    self.busy_tiles.append(tile)
+                    busy_tiles.append(tile)
 

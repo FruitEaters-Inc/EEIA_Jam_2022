@@ -119,8 +119,8 @@ class MyApp(App):
     def move_drones(self):
         for event in self.my_events.eventList:
             if event.obsolete:
-                self.my_events.eventList.pop(
-                    self.my_events.eventList.index(event))
+                business_logic.remove_tile(event.tile)
+                self.my_events.eventList.pop(self.my_events.eventList.index(event))
 
         for drone in self.player.drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
