@@ -22,12 +22,33 @@ def remove_tile(tile):
             print(busy_tiles.pop(busy_tiles.index(t)))
 
 
+thief = False
+
+
+def get_thief():
+    global thief
+    return thief
+
+
+def reset_thief():
+    global thief
+    thief = False
+
+
+RANDOM_PROB = 0.1
+
+
 class EventSpawner:
     def __init__(self, tile_map) -> None:
         self.tileMap = tile_map
         self.eventList = []
 
-    def spawn_event(self) -> None:
+    def spawn_event(self):
+        global thief
+        if random.random() < RANDOM_PROB:
+            thief = True
+            return
+
         global busy_tiles
         eventable = False
         while not eventable:

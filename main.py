@@ -32,6 +32,11 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.generate_thief_layout = None
+        self.btn2 = None
+        self.btn1 = None
+        self.thief_info = None
+        self.thief_layout = None
         self.clicker_display = None
         self.clicker_buy_button = None
         self.counter_button = None
@@ -56,6 +61,9 @@ class MyApp(App):
         self.tile_map = None
 
     def build(self):
+
+        self.generate_thief_layout = False
+
         self.map = Map.load_map("map.txt")
         self.tile_map = Map.map_organise(self.map)
 
@@ -130,6 +138,16 @@ class MyApp(App):
         self.drone_movement = Clock.schedule_interval(
             lambda instance: self.move_drones(), 1)
 
+        self.thief_layout = RelativeLayout()
+        self.btn2 = Button(background_normal='gray.png', background_down='gray.png', pos=(100, 100), size_hint=(None, None), size=(400, 200))
+        self.thief_layout.add_widget(self.btn2)
+        self.thief_info = Label(text="Your drone has been stolen during a mission.",
+                                pos=(-715, -457), font_size=40)
+        self.thief_layout.add_widget(self.thief_info)
+        self.btn1 = Button(text='OK :(', pos=(280, 120), size_hint=(None, None), size=(100, 40))
+        self.btn1.bind(on_press=lambda instance: self.close_thief_layout())
+        self.thief_layout.add_widget(self.btn1)
+
         self.refresh()
 
         return self.main_layout
@@ -159,6 +177,13 @@ class MyApp(App):
             if drone is not None:
                 if len(drone.movePath) != 0:
                     drone.draw_drone(self.drone_layout)
+                else:
+                    if business_logic.thief:
+                        self.player.drones.pop(self.player.drones.index(drone))
+                        self.player.drone_count -= 1
+                        self.drone_display.text = str(self.player.drone_count)
+                        business_logic.thief = False
+                        self.generate_thief_layout = True
 
         self.main_layout.add_widget(self.drone_layout)
 
@@ -168,6 +193,9 @@ class MyApp(App):
                 event.draw_event(self.event_layout)
 
         self.main_layout.add_widget(self.event_layout)
+
+        if self.generate_thief_layout:
+            self.main_layout.add_widget(self.thief_layout)
 
         return self.main_layout
 
@@ -188,6 +216,9 @@ class MyApp(App):
 
         for drone in self.player.drones:
             drone.move_to(drone.pop_move())
+
+    def close_thief_layout(self):
+        self.generate_thief_layout = False
 
 
 MyApp().run()
