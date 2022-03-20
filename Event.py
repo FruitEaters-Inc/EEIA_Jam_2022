@@ -8,7 +8,8 @@ destinations = []
 
 def add_destination(event):
     global destinations
-    destinations.append(event)
+    if event not in destinations:
+        destinations.append(event)
 
 
 def get_destinations():
