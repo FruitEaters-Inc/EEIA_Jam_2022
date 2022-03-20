@@ -67,6 +67,9 @@ class MyApp(App):
         screen = Image(source='screen.png', pos=(-130, 13), allow_stretch=False, nocache=True)
         self.map_layout.add_widget(screen)
 
+        lama = Image(source='lama_basista.png', pos=(830, 300), allow_stretch=False, nocache=True)
+        self.map_layout.add_widget(lama)
+
         self.my_drones = []
         self.my_drones.append(new_drone)
         self.my_drones.append(new_drone2)
