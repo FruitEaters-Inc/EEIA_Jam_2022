@@ -17,7 +17,7 @@ def dfs(start, end):
     closed_list = set()
 
     g = {}
-    g[start]  = 0
+    g[start] = 0
 
     pairs = {}
     pairs[start] = start
@@ -43,7 +43,7 @@ def dfs(start, end):
             reconst_path.reverse()
             return reconst_path
         
-        for m in n.neighbours.values():
+        for m in list(filter(lambda x: x.is_safe and x.is_permitted, n.neighbours.values())):
             if m not in open_list and m not in closed_list:
                 open_list.add(m)
                 pairs[m] = n
