@@ -146,8 +146,8 @@ class MyApp(App):
         self.main_layout.add_widget(self.map_layout)
         self.drone_layout.clear_widgets()
 
-        self.wealth_display.text = str(self.player.wealth) + " PLN"
-        self.drone_display.text = str(self.player.drone_count) + " DRN"
+        self.wealth_display.text = str(self.player.wealth)
+        self.drone_display.text = str(self.player.drone_count)
 
         for drone in self.player.drones:
             if drone is not None:
