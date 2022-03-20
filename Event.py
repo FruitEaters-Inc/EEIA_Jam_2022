@@ -10,6 +10,7 @@ def add_destination(event):
     global destinations
     if event not in destinations:
         destinations.append(event)
+        event.is_added_to_destinations = True
 
 
 def get_destinations():
@@ -23,6 +24,7 @@ class Event:
         self.tile = tile
         self.target = None
         self.image = Image(source='alert.zip', pos=tile.pos, nocache=True)
+        self.is_added_to_destinations = False
         x = tile.pos[0]
         y = tile.pos[1]
         x += 940

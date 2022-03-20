@@ -76,7 +76,7 @@ class MyApp(App):
                        nocache=True)
         self.map_layout.add_widget(screen)
 
-        self.drone_buy_clicker = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png',
+        self.drone_buy_clicker = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
                                         pos=(1010, 10), size_hint=(None, None), size=(262, 172))
         self.drone_buy_clicker.bind(on_press=lambda instance: 0)
         self.map_layout.add_widget(self.drone_buy_clicker)
