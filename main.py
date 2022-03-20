@@ -31,6 +31,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.counter_button = None
         self.drone_buy_button = None
         self.main_loop = None
         self.event_clock = None
@@ -82,6 +83,10 @@ class MyApp(App):
                                        size_hint=(None, None), size=(200, 100))
         self.drone_buy_button.bind(on_press=lambda instance: 0)
         self.map_layout.add_widget(self.drone_buy_button)
+
+        self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(300, 10),
+                                     size_hint=(None, None), size=(320, 130))
+        self.map_layout.add_widget(self.counter_button)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
