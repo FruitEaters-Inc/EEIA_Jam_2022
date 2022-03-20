@@ -32,6 +32,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.clicker_display = None
         self.clicker_buy_button = None
         self.counter_button = None
         self.drone_buy_button = None
@@ -94,13 +95,17 @@ class MyApp(App):
                                      size_hint=(None, None), size=(532, 130))
         self.map_layout.add_widget(self.counter_button)
 
-        self.wealth_display = Label(text=str(self.player.wealth) + " PLN",
+        self.wealth_display = Label(text=str(self.player.wealth),
                                     pos=(-510, -457), font_size=40, )
         self.map_layout.add_widget(self.wealth_display)
 
-        self.drone_display = Label(text=str(self.player.drone_count) + " DRN",
-                                    pos=(-150, -457), font_size=40)
+        self.drone_display = Label(text=str(self.player.drone_count),
+                                   pos=(-150, -457), font_size=40)
         self.map_layout.add_widget(self.drone_display)
+
+        self.clicker_display = Label(text=str(self.player.autoclicker),
+                                     pos=(-150, -457), font_size=40)
+        self.map_layout.add_widget(self.clicker_display)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
