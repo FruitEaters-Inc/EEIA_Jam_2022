@@ -1,4 +1,5 @@
-import Drone
+from kivy.uix.button import Button
+
 import Map
 from kivy.core.window import Window
 from kivy.uix.relativelayout import RelativeLayout
@@ -30,6 +31,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.drone_buy_button = None
         self.main_loop = None
         self.event_clock = None
         self.drone_movement = None
@@ -75,6 +77,11 @@ class MyApp(App):
         screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False,
                        nocache=True)
         self.map_layout.add_widget(screen)
+
+        self.drone_buy_button = Button(background_normal='grass.png', background_down='grass.png', pos=(1300, 10),
+                                       size_hint=(None, None), size=(200, 100))
+        self.drone_buy_button.bind(on_press=lambda instance: 0)
+        self.map_layout.add_widget(self.drone_buy_button)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
