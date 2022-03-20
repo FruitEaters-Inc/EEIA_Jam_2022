@@ -91,7 +91,7 @@ class MyApp(App):
         self.map_layout.add_widget(self.drone_buy_button)
 
         self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(200, 10),
-                                     size_hint=(None, None), size=(320, 130))
+                                     size_hint=(None, None), size=(532, 130))
         self.map_layout.add_widget(self.counter_button)
 
         self.wealth_display = Label(text=str(self.player.wealth) + " PLN",
