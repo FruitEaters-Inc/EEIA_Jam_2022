@@ -32,7 +32,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
-        self.drone_buy_clicker = None
+        self.clicker_buy_button = None
         self.counter_button = None
         self.drone_buy_button = None
         self.main_loop = None
@@ -82,8 +82,8 @@ class MyApp(App):
 
         self.clicker_buy_button = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
                                         pos=(1010, 10), size_hint=(None, None), size=(262, 172))
-        self.clicker_buy_button.bind(on_press=lambda instance: 0)
-        self.map_layout.add_widget(self.drone_buy_clicker)
+        self.clicker_buy_button.bind(on_press=lambda instance: self.IncreaseAutoclicker())
+        self.map_layout.add_widget(self.clicker_buy_button)
 
         self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1245, 10),
                                        size_hint=(None, None), size=(262, 172))
@@ -137,7 +137,7 @@ class MyApp(App):
                 lambda instance: 0, 10 / self.player.autoclicker)
 
     def autoclick(self):
-        filtered = filter(lambda x: not x.is_added_to_destinations, self.my_events.eventList)
+        filtered = list(filter(lambda x: not x.is_added_to_destinations, self.my_events.eventList))
         if len(filtered) != 0:
             Event.add_destination(filtered[0])
 
