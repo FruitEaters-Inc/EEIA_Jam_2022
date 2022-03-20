@@ -1,6 +1,8 @@
 import Drone
 from Tile import Tile
 
+DRONE_PRICE = 250
+
 
 class Player:
     def __init__(self, HQ_tile: Tile):
@@ -23,6 +25,10 @@ class Player:
         self.drones.pop()
         self.drone_count -= 1
 
+    def canAffordDrone(self) -> bool:
+        return self.wealth >= DRONE_PRICE
+
     def purchaseDrone(self) -> None:
-        self.reduceWealth(250)
-        self.addDrone()
+        if self.canAffordDrone():
+            self.reduceWealth(DRONE_PRICE)
+            self.addDrone()
