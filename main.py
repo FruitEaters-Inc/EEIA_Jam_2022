@@ -37,6 +37,7 @@ class MyApp(App):
         self.drone_buy_button = None
         self.main_loop = None
         self.event_clock = None
+        self.autoclicker_clock = None
         self.drone_movement = None
 
         self.my_events = None
@@ -79,9 +80,9 @@ class MyApp(App):
                        nocache=True)
         self.map_layout.add_widget(screen)
 
-        self.drone_buy_clicker = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
+        self.clicker_buy_button = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
                                         pos=(1010, 10), size_hint=(None, None), size=(262, 172))
-        self.drone_buy_clicker.bind(on_press=lambda instance: 0)
+        self.clicker_buy_button.bind(on_press=lambda instance: 0)
         self.map_layout.add_widget(self.drone_buy_clicker)
 
         self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1245, 10),
@@ -116,7 +117,7 @@ class MyApp(App):
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
         self.main_loop = Clock.schedule_interval(
-            lambda instance: self.refresh(), 1 / 60)
+            lambda instance: self.refresh(), 1 / 10)
 
         self.event_clock = Clock.schedule_interval(
             lambda instance: self.my_events.spawn_event(), 5)
@@ -127,6 +128,18 @@ class MyApp(App):
         self.refresh()
 
         return self.main_layout
+
+    def IncreaseAutoclicker(self):
+        if self.player.purchaseAutoclicker:
+            if self.autoclicker_clock is not None:
+                self.autoclicker_clock.cancel()
+            self.autoclicker_clock = Clock.schedule_interval(
+                lambda instance: 0, 10 / self.player.autoclicker)
+
+    def autoclick(self):
+        filtered = filter(lambda x: not x.is_added_to_destinations, self.my_events.eventList)
+        if len(filtered) != 0:
+            Event.add_destination(filtered[0])
 
     def refresh(self):
         self.main_layout.clear_widgets()
