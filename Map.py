@@ -25,7 +25,7 @@ def map_organise(char_map):
 
     for y in char_map:
 
-        y_coord = y_counter * -40 + 450
+        y_coord = y_counter * -40 + 451
         x_counter = 0
 
         for x in y:
