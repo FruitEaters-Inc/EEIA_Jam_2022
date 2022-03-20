@@ -54,7 +54,7 @@ class MyApp(App):
         self.event_layout = RelativeLayout()
         self.map_layout = RelativeLayout()
 
-        desk = Image(source='desk.png', pos=(-130, -470), allow_stretch=False, nocache=True)
+        desk = Image(source='desk.png', pos=(-130, -471), allow_stretch=False, nocache=True)
         self.map_layout.add_widget(desk)
 
         Map.build_map(self.tile_map, self.map_layout)
@@ -67,7 +67,7 @@ class MyApp(App):
         new_drone = Drone.Drone(drone_spawn, 10)
         new_drone2 = Drone.Drone(drone_spawn, 10)
 
-        screen = Image(source='screen.png', pos=(-130, 13), allow_stretch=False, nocache=True)
+        screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False, nocache=True)
         self.map_layout.add_widget(screen)
 
         lama = Image(source='lama_basista.png', pos=(830, 300), allow_stretch=False, nocache=True)
