@@ -94,12 +94,12 @@ class MyApp(App):
                                      size_hint=(None, None), size=(320, 130))
         self.map_layout.add_widget(self.counter_button)
 
-        self.wealth_display = Label(text=str(self.player.wealth),
-                                    pos=(300, 10), size=(3200, 1300))
+        self.wealth_display = Label(text=str(self.player.wealth) + " PLN",
+                                    pos=(-510, -457), font_size=40, )
         self.map_layout.add_widget(self.wealth_display)
 
-        self.drone_display = Label(text=str(self.player.wealth),
-                                    pos=(350, 10), size=(3200, 1300))
+        self.drone_display = Label(text=str(self.player.drone_count) + " DRN",
+                                    pos=(-150, -457), font_size=40)
         self.map_layout.add_widget(self.drone_display)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
