@@ -4,10 +4,10 @@ class Player:
         self.drone_count = 1
 
     def increaseWealth(self, count: int) -> None:
-        self.wealth += int
+        self.wealth += count
 
     def reduceWealth(self, count: int) -> None:
-        self.wealth += int
+        self.wealth += count
 
     def addDrone(self) -> None:
         self.drone_count += 1
