@@ -78,7 +78,15 @@ class MyApp(App):
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
+
+        lama2 = Image(source='lama_chlopak.png', pos=(830, 50),
+                      allow_stretch=False, nocache=True)
+
+        lama3 = Image(source='lama_zaklin.png', pos=(830, -200),
+                      allow_stretch=False, nocache=True)
         self.map_layout.add_widget(lama)
+        self.map_layout.add_widget(lama2)
+        self.map_layout.add_widget(lama3)
 
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
@@ -119,8 +127,8 @@ class MyApp(App):
     def move_drones(self):
         for event in self.my_events.eventList:
             if event.obsolete:
-                business_logic.remove_tile(event.tile)
-                self.my_events.eventList.pop(self.my_events.eventList.index(event))
+                self.my_events.eventList.pop(
+                    self.my_events.eventList.index(event))
 
         for drone in self.player.drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:

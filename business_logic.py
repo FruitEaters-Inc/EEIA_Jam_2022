@@ -1,4 +1,16 @@
 import random
+from Tile import Tile
+
+
+class Finance:
+    def __init__(self) -> None:
+        self.budget = 0
+
+
+class Dronex(Tile):
+    def __init__(self) -> None:
+        super().__init__()
+
 
 busy_tiles = []
 
