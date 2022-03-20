@@ -76,11 +76,11 @@ class MyApp(App):
         self.map_layout.add_widget(screen)
 
         self.drone_buy_clicker = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png',
-                                        pos=(980, 10), size_hint=(None, None), size=(262, 172))
+                                        pos=(1010, 10), size_hint=(None, None), size=(262, 172))
         self.drone_buy_clicker.bind(on_press=lambda instance: 0)
         self.map_layout.add_widget(self.drone_buy_clicker)
 
-        self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1230, 10),
+        self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1245, 10),
                                        size_hint=(None, None), size=(262, 172))
         self.drone_buy_button.bind(on_press=lambda instance: self.player.purchaseDrone())
         self.map_layout.add_widget(self.drone_buy_button)
