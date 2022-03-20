@@ -36,6 +36,7 @@ class MyApp(App):
         self.drone_buy_button = None
         self.main_loop = None
         self.event_clock = None
+        self.autoclicker_clock = None
         self.drone_movement = None
 
         self.my_events = None
@@ -104,7 +105,7 @@ class MyApp(App):
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
         self.main_loop = Clock.schedule_interval(
-            lambda instance: self.refresh(), 1 / 60)
+            lambda instance: self.refresh(), 1 / 10)
 
         self.event_clock = Clock.schedule_interval(
             lambda instance: self.my_events.spawn_event(), 5)
@@ -115,6 +116,12 @@ class MyApp(App):
         self.refresh()
 
         return self.main_layout
+
+    def IncreaseAutoclicker(self):
+        if self.autoclicker_clock is not None:
+            self.autoclicker_clock.cancel()
+        self.autoclicker_clock = Clock.schedule_interval(
+            lambda instance: 0, 10 / self.player.autoclicker)
 
     def refresh(self):
         self.main_layout.clear_widgets()
