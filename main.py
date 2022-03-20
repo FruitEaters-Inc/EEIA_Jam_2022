@@ -48,6 +48,7 @@ class MyApp(App):
         self.map_layout = None
 
         self.wealth_display = None
+        self.drone_display = None
 
         self.map = None
         self.tile_map = None
@@ -96,6 +97,10 @@ class MyApp(App):
                                     pos=(300, 10), size=(3200, 1300))
         self.map_layout.add_widget(self.wealth_display)
 
+        self.drone_display = Label(text=str(self.player.wealth),
+                                    pos=(350, 10), size=(3200, 1300))
+        self.map_layout.add_widget(self.drone_display)
+
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
 
@@ -129,6 +134,7 @@ class MyApp(App):
         self.drone_layout.clear_widgets()
 
         self.wealth_display.text = str(self.player.wealth)
+        self.drone_display.text = str(self.player.drone_count)
 
         for drone in self.player.drones:
             if drone is not None:
