@@ -76,9 +76,9 @@ class MyApp(App):
                        nocache=True)
         self.map_layout.add_widget(screen)
 
-        self.drone_buy_clicker = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
+        self.clicker_buy_button = Button(background_normal='autoclicker.png', background_down='autoclicker_down.png',
                                         pos=(1010, 10), size_hint=(None, None), size=(262, 172))
-        self.drone_buy_clicker.bind(on_press=lambda instance: 0)
+        self.clicker_buy_button.bind(on_press=lambda instance: 0)
         self.map_layout.add_widget(self.drone_buy_clicker)
 
         self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1245, 10),
@@ -118,10 +118,16 @@ class MyApp(App):
         return self.main_layout
 
     def IncreaseAutoclicker(self):
-        if self.autoclicker_clock is not None:
-            self.autoclicker_clock.cancel()
-        self.autoclicker_clock = Clock.schedule_interval(
-            lambda instance: 0, 10 / self.player.autoclicker)
+        if self.player.purchaseAutoclicker:
+            if self.autoclicker_clock is not None:
+                self.autoclicker_clock.cancel()
+            self.autoclicker_clock = Clock.schedule_interval(
+                lambda instance: 0, 10 / self.player.autoclicker)
+
+    def autoclick(self):
+        filtered = filter(lambda x: not x.is_added_to_destinations, self.my_events.eventList)
+        if len(filtered) != 0:
+            Event.add_destination(filtered[0])
 
     def refresh(self):
         self.main_layout.clear_widgets()
