@@ -1,4 +1,5 @@
 from kivy.uix.button import Button
+from kivy.uix.label import Label
 
 import Map
 from kivy.core.window import Window
@@ -47,6 +48,9 @@ class MyApp(App):
         self.drone_layout = None
         self.map_layout = None
 
+        self.wealth_display = None
+        self.drone_display = None
+
         self.map = None
         self.tile_map = None
 
@@ -89,6 +93,14 @@ class MyApp(App):
         self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(300, 10),
                                      size_hint=(None, None), size=(320, 130))
         self.map_layout.add_widget(self.counter_button)
+
+        self.wealth_display = Label(text=str(self.player.wealth),
+                                    pos=(300, 10), size=(3200, 1300))
+        self.map_layout.add_widget(self.wealth_display)
+
+        self.drone_display = Label(text=str(self.player.wealth),
+                                    pos=(350, 10), size=(3200, 1300))
+        self.map_layout.add_widget(self.drone_display)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
                      allow_stretch=False, nocache=True)
@@ -133,6 +145,9 @@ class MyApp(App):
         self.main_layout.clear_widgets()
         self.main_layout.add_widget(self.map_layout)
         self.drone_layout.clear_widgets()
+
+        self.wealth_display.text = str(self.player.wealth)
+        self.drone_display.text = str(self.player.drone_count)
 
         for drone in self.player.drones:
             if drone is not None:
