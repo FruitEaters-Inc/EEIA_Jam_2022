@@ -70,18 +70,13 @@ class MyApp(App):
 
         self.player = Player.Player(drone_spawn)
 
-        #####TEMPORARY#####
-        self.player.addDrone()
-        self.player.addDrone()
-        #####TEMPORARY#####
-
         screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False,
                        nocache=True)
         self.map_layout.add_widget(screen)
 
         self.drone_buy_button = Button(background_normal='grass.png', background_down='grass.png', pos=(1300, 10),
                                        size_hint=(None, None), size=(200, 100))
-        self.drone_buy_button.bind(on_press=lambda instance: 0)
+        self.drone_buy_button.bind(on_press=lambda instance: self.player.purchaseDrone())
         self.map_layout.add_widget(self.drone_buy_button)
 
         self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(300, 10),
