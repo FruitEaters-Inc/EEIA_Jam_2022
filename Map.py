@@ -247,13 +247,70 @@ def map_organise(char_map):
                 new_tile.type = "building"
             elif x == 'X':
                 new_tile.image = Image(source='buildings/X.png', pos=(x_coord, y_coord), nocache=True)
-                new_tile.type = "building"
+                new_tile.type = "grass"
             elif x == 'Y':
                 new_tile.image = Image(source='buildings/Y.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.type = "building"
             elif x == 'Z':
                 new_tile.image = Image(source='buildings/Z.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.type = "building"
+            elif x == '2':
+                new_tile.image = Image(source='buildings/2.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "skyscraper"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '3':
+                new_tile.image = Image(source='buildings/3.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "skyscraper"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '4':
+                new_tile.image = Image(source='buildings/4.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "skyscraper"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '5':
+                new_tile.image = Image(source='buildings/5.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "skyscraper"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '6':
+                new_tile.image = Image(source='buildings/6.png', pos=(x_coord, y_coord+building_offset), nocache=True)
+                new_tile.type = "skyscraper"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '7':
+                new_tile.image = Image(source='buildings/7.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "base"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '8':
+                new_tile.image = Image(source='buildings/8.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "base"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '9':
+                new_tile.image = Image(source='buildings/9.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "base"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '!':
+                new_tile.image = Image(source='buildings/!.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "base"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == ';':
+                new_tile.image = Image(source='buildings/;.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "base"
+                new_tile.is_permitted = False
+                new_tile.can_give_interaction = False
+            elif x == '.':
+                new_tile.image = Image(source='buildings/..png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "grass"
+            elif x == ',':
+                new_tile.image = Image(source='buildings/,.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "grass"
+
 
 
             new_tile.pos = (x_coord, y_coord)
