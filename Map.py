@@ -179,6 +179,82 @@ def map_organise(char_map):
                 new_tile.image = Image(source='roads/@.png', pos=(x_coord, y_coord), nocache=True)
                 new_tile.can_give_interaction = False
                 new_tile.type = "water"
+            elif x == 'z':
+                new_tile.image = Image(source='roads/z.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'A':
+                new_tile.image = Image(source='buildings/A.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'B':
+                new_tile.image = Image(source='buildings/B.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'C':
+                new_tile.image = Image(source='buildings/C.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'D':
+                new_tile.image = Image(source='buildings/D.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'E':
+                new_tile.image = Image(source='buildings/E.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'F':
+                new_tile.image = Image(source='buildings/F.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'G':
+                new_tile.image = Image(source='buildings/G.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'H':
+                new_tile.image = Image(source='buildings/H.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'I':
+                new_tile.image = Image(source='buildings/I.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'J':
+                new_tile.image = Image(source='buildings/J.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'K':
+                new_tile.image = Image(source='buildings/K.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'L':
+                new_tile.image = Image(source='buildings/L.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'M':
+                new_tile.image = Image(source='buildings/M.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'N':
+                new_tile.image = Image(source='buildings/N.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'O':
+                new_tile.image = Image(source='buildings/O.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'P':
+                new_tile.image = Image(source='buildings/P.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'R':
+                new_tile.image = Image(source='buildings/R.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'S':
+                new_tile.image = Image(source='buildings/S.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'T':
+                new_tile.image = Image(source='buildings/T.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'U':
+                new_tile.image = Image(source='buildings/U.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'V':
+                new_tile.image = Image(source='buildings/V.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'X':
+                new_tile.image = Image(source='buildings/X.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'Y':
+                new_tile.image = Image(source='buildings/Y.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+            elif x == 'Z':
+                new_tile.image = Image(source='buildings/Z.png', pos=(x_coord, y_coord), nocache=True)
+                new_tile.type = "building"
+
 
             new_tile.pos = (x_coord, y_coord)
 
