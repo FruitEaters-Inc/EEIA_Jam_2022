@@ -35,7 +35,7 @@ def reset_thief():
     thief = False
 
 
-RANDOM_PROB = 0.1
+RANDOM_PROB = 0.05
 
 
 class EventSpawner:
