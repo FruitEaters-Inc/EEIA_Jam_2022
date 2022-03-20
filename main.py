@@ -8,6 +8,7 @@ from kivy.uix.image import Image
 from kivy.config import Config
 import kivy
 
+import Player
 import Tile
 import Event
 import business_logic
@@ -15,7 +16,6 @@ import business_logic
 kivy.require('2.0.0')
 Window.size = (1920, 1080)
 Window.clearcolor = (78 / 255, 173 / 255, 245 / 255, 1)
-
 
 Window.fullscreen = True
 
@@ -29,13 +29,13 @@ Config.set('graphics', 'resizable', False)
 class MyApp(App):
     def __init__(self):
         super().__init__()
-        
+
         self.main_loop = None
         self.event_clock = None
         self.drone_movement = None
 
         self.my_events = None
-        self.my_drones = None
+        self.player = None
 
         self.main_layout = None
         self.event_layout = None
@@ -54,7 +54,8 @@ class MyApp(App):
         self.event_layout = RelativeLayout()
         self.map_layout = RelativeLayout()
 
-        desk = Image(source='desk.png', pos=(-130, -471), allow_stretch=False, nocache=True)
+        desk = Image(source='desk.png', pos=(-130, -471), allow_stretch=False,
+                     nocache=True)
         self.map_layout.add_widget(desk)
 
         Map.build_map(self.tile_map, self.map_layout)
@@ -64,26 +65,31 @@ class MyApp(App):
         drone_spawn = Tile.find_tile(self.tile_map, "DRONEX")
         drone_spawn = drone_spawn.neighbours["up"]
 
-        new_drone = Drone.Drone(drone_spawn, 10)
-        new_drone2 = Drone.Drone(drone_spawn, 10)
+        self.player = Player.Player(drone_spawn)
 
-        screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False, nocache=True)
+        #####TEMPORARY#####
+        self.player.addDrone()
+        self.player.addDrone()
+        #####TEMPORARY#####
+
+        screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False,
+                       nocache=True)
         self.map_layout.add_widget(screen)
 
-        lama = Image(source='lama_basista.png', pos=(830, 300), allow_stretch=False, nocache=True)
+        lama = Image(source='lama_basista.png', pos=(830, 300),
+                     allow_stretch=False, nocache=True)
         self.map_layout.add_widget(lama)
-
-        self.my_drones = []
-        self.my_drones.append(new_drone)
-        self.my_drones.append(new_drone2)
 
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
-        self.main_loop = Clock.schedule_interval(lambda instance: self.refresh(), 1/60)
+        self.main_loop = Clock.schedule_interval(
+            lambda instance: self.refresh(), 1 / 60)
 
-        self.event_clock = Clock.schedule_interval(lambda instance: self.my_events.spawn_event(), 5)
+        self.event_clock = Clock.schedule_interval(
+            lambda instance: self.my_events.spawn_event(), 5)
 
-        self.drone_movement = Clock.schedule_interval(lambda instance: self.move_drones(), 1/6)
+        self.drone_movement = Clock.schedule_interval(
+            lambda instance: self.move_drones(), 1 / 6)
 
         self.refresh()
 
@@ -94,7 +100,7 @@ class MyApp(App):
         self.main_layout.add_widget(self.map_layout)
         self.drone_layout.clear_widgets()
 
-        for drone in self.my_drones:
+        for drone in self.player.drones:
             if drone is not None:
                 if len(drone.movePath) != 0:
                     drone.draw_drone(self.drone_layout)
@@ -113,9 +119,10 @@ class MyApp(App):
     def move_drones(self):
         for event in self.my_events.eventList:
             if event.obsolete:
-                self.my_events.eventList.pop(self.my_events.eventList.index(event))
+                self.my_events.eventList.pop(
+                    self.my_events.eventList.index(event))
 
-        for drone in self.my_drones:
+        for drone in self.player.drones:
             if len(drone.movePath) == 0 and len(Event.destinations) != 0:
                 event = Event.destinations.pop()
                 drone.add_target(event)
@@ -123,7 +130,7 @@ class MyApp(App):
                 event.image.source = "green_alert.zip"
                 event.remove_button()
 
-        for drone in self.my_drones:
+        for drone in self.player.drones:
             drone.move_to(drone.pop_move())
 
 
