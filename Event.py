@@ -29,7 +29,7 @@ class Event:
 
         self.random_package()
 
-        self.button = Button(background_normal='drone.png', background_down='trans.png', pos=(x, y),
+        self.button = Button(background_normal='trans.png', background_down='trans.png', pos=(x, y),
                              size_hint=(None, None), size=(40, 40))
         self.button.bind(on_press=lambda instance: add_destination(self))
 
