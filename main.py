@@ -31,6 +31,7 @@ class MyApp(App):
     def __init__(self):
         super().__init__()
 
+        self.drone_buy_clicker = None
         self.counter_button = None
         self.drone_buy_button = None
         self.main_loop = None
@@ -73,6 +74,11 @@ class MyApp(App):
         screen = Image(source='screen.png', pos=(-130, 14), allow_stretch=False,
                        nocache=True)
         self.map_layout.add_widget(screen)
+
+        self.drone_buy_clicker = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png',
+                                        pos=(1000, 10), size_hint=(None, None), size=(262, 172))
+        self.drone_buy_clicker.bind(on_press=lambda instance: 0)
+        self.map_layout.add_widget(self.drone_buy_clicker)
 
         self.drone_buy_button = Button(background_normal='drone_buy.png', background_down='drone_buy_down.png', pos=(1200, 10),
                                        size_hint=(None, None), size=(262, 172))
