@@ -91,20 +91,20 @@ class MyApp(App):
         self.drone_buy_button.bind(on_press=lambda instance: self.player.purchaseDrone())
         self.map_layout.add_widget(self.drone_buy_button)
 
-        self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(200, 10),
+        self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(100, 10),
                                      size_hint=(None, None), size=(532, 130))
         self.map_layout.add_widget(self.counter_button)
 
         self.wealth_display = Label(text=str(self.player.wealth),
-                                    pos=(-510, -457), font_size=40, )
+                                    pos=(-715, -457), font_size=40, )
         self.map_layout.add_widget(self.wealth_display)
 
         self.drone_display = Label(text=str(self.player.drone_count),
-                                   pos=(-150, -457), font_size=40)
+                                   pos=(-545, -457), font_size=40)
         self.map_layout.add_widget(self.drone_display)
 
         self.clicker_display = Label(text=str(self.player.autoclicker),
-                                     pos=(-150, -457), font_size=40)
+                                     pos=(-427, -457), font_size=40)
         self.map_layout.add_widget(self.clicker_display)
 
         lama = Image(source='lama_basista.png', pos=(830, 300),
@@ -153,6 +153,7 @@ class MyApp(App):
 
         self.wealth_display.text = str(self.player.wealth)
         self.drone_display.text = str(self.player.drone_count)
+        self.clicker_display.text = str(self.player.autoclicker)
 
         for drone in self.player.drones:
             if drone is not None:
