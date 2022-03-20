@@ -54,6 +54,9 @@ class MyApp(App):
         self.event_layout = RelativeLayout()
         self.map_layout = RelativeLayout()
 
+        desk = Image(source='desk.png', pos=(-130, -470), allow_stretch=False, nocache=True)
+        self.map_layout.add_widget(desk)
+
         Map.build_map(self.tile_map, self.map_layout)
 
         Tile.find_neighbours(self.tile_map)
