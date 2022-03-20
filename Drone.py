@@ -16,6 +16,7 @@ class Drone:
         self.targets = []
         self.image = Image(source='drone.zip', pos=self.current_pos,
                            nocache=True)
+        self.image.anim_delay = 1/8
 
     def set_image(self, image: str):
         if self.image.source == image:
@@ -28,6 +29,9 @@ class Drone:
         elif image == "empty":
             self.remove_event()
             self.image.source = "drone.zip"
+
+        self.image.reload()
+        self.image.anim_delay = 1 / 8
 
     def remove_event(self):
         if len(self.targets) != 0:

@@ -90,7 +90,7 @@ class MyApp(App):
         self.drone_buy_button.bind(on_press=lambda instance: self.player.purchaseDrone())
         self.map_layout.add_widget(self.drone_buy_button)
 
-        self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(300, 10),
+        self.counter_button = Button(background_normal='counter.png', background_down='counter.png', pos=(200, 10),
                                      size_hint=(None, None), size=(320, 130))
         self.map_layout.add_widget(self.counter_button)
 
@@ -117,10 +117,10 @@ class MyApp(App):
         self.my_events = business_logic.EventSpawner(self.tile_map)
 
         self.main_loop = Clock.schedule_interval(
-            lambda instance: self.refresh(), 1)
+            lambda instance: self.refresh(), 0.5)
 
         self.event_clock = Clock.schedule_interval(
-            lambda instance: self.my_events.spawn_event(), 5)
+            lambda instance: self.my_events.spawn_event(), 4)
 
         self.drone_movement = Clock.schedule_interval(
             lambda instance: self.move_drones(), 1)
@@ -177,6 +177,7 @@ class MyApp(App):
                 drone.add_target(event)
                 drone.create_path(event.tile, event.target)
                 event.image.source = "green_alert.zip"
+                event.image.reload()
                 event.remove_button()
 
         for drone in self.player.drones:
