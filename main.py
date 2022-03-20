@@ -141,10 +141,10 @@ class MyApp(App):
         self.thief_layout = RelativeLayout()
         self.btn2 = Button(background_normal='gray.png', background_down='gray.png', pos=(100, 100), size_hint=(None, None), size=(400, 200))
         self.thief_layout.add_widget(self.btn2)
-        self.thief_info = Label(text="Your drone has been stolen during a mission.",
-                                pos=(-715, -457), font_size=40)
+        self.thief_info = Label(text="Your drone has been stolen during the mission.",
+                                pos=(-665, -327), font_size=18)
         self.thief_layout.add_widget(self.thief_info)
-        self.btn1 = Button(text='OK :(', pos=(280, 120), size_hint=(None, None), size=(100, 40))
+        self.btn1 = Button(text='OK :(', pos=(350, 120), size_hint=(None, None), size=(100, 40))
         self.btn1.bind(on_press=lambda instance: self.close_thief_layout())
         self.thief_layout.add_widget(self.btn1)
 
